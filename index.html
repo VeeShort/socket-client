@@ -4,15 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
   <title>
     Socket client
   </title>
 </head>
 
 <body>
-  <h2 id="status"></h2>
+  <div class="chat-container">
+    <div id="chat"></div>
+    <div class="controls-container">
+      <div class="controls">
+        <input type="text" placeholder="Enter message here" id="msg-input">
+        <button id="send-btn">&#10148;</button>
+      </div>
+    </div>
+  </div>
   <script src="https://dry-peak-10770.herokuapp.com/socket.io/socket.io.js"></script>
-  <script src="src/index.js"></script>
+  <script type="module" src="src/index.js"></script>
 </body>
 
 </html>

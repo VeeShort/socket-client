@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  height: 100vh;
+}
+
+.chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #36393f;
+}
+#chat {
+  height: 100%;
+  margin: 5px;
+  margin-bottom: 82px;
+  overflow-y: auto;
+}
+
+.chat-container .controls {
+  position: relative;
+  margin: 0 15px;
+  height: 42px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat-container .controls-container {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 20px;
+}
+/* submit button */
+.chat-container .controls button {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  width: 42px;
+  font-size: 30px;
+  line-height: 1;
+  color: #40444b;
+  background-color: #cecece;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  background-color: #40444b;
+  color: #dcddde;
+  width: 100%;
+  padding-right: 57px;
+}
+
+.message-container {
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #dcddde;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.message-container .username {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.message-container.sys {
+  text-align: center;
+  opacity: 0.6;
+  position: relative;
+}
+.message-container.sys:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: calc(100% - 100px);
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #656565;
+  top: 50%;
+  z-index: 1;
+}
+.message-container.sys .username,
+.message-container.sys .message {
+  position: relative;
+  z-index: 2;
+  background-color: #36393f; /* same as chat-container */
+}
+.message-container.sys .username {
+  padding-left: 10px;
+  display: inline;
+  padding-right: 5px;
+}
+.message-container.sys .message {
+  padding-right: 10px;
+}
+
+/* custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2f3136;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+}
+
+/* Handle + on hover*/
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  background: #202225;
+}
