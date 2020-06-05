@@ -5,6 +5,7 @@
 }
 body, html {
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .chat-container {
@@ -12,11 +13,45 @@ body, html {
   display: flex;
   flex-direction: column;
   background-color: #36393f;
+  display: none;
 }
+.chat-container.visible {
+  display: flex;
+}
+.chat-container .users-container {
+  background: #40444b;
+  color: #dcddde;
+  padding: 3px 15px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.users-container .user-item {
+  border-radius: 4px;
+  background: #cecece;
+  color: #333;
+  padding: 0 8px;
+  float: left;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.users-container .user-color {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  margin-right: 3px;
+  border: #535456;
+}
+
 #chat {
   height: 100%;
   margin: 5px;
   margin-bottom: 82px;
+  margin-top: 21px;
   overflow-y: auto;
 }
 
@@ -64,12 +99,20 @@ input[type="text"] {
   padding: 10px 15px;
   border-radius: 5px;
   color: #dcddde;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .message-container .username {
   font-weight: bold;
   color: #fff;
   margin-bottom: 5px;
+}
+
+.message-container .user-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
 }
 
 .message-container.sys {
@@ -89,6 +132,16 @@ input[type="text"] {
   background-color: #656565;
   top: 50%;
   z-index: 1;
+}
+.message-container.sys .username-container {
+  display: inline-block;
+  position: relative;
+  background-color: #36393f;
+  z-index: 2;
+}
+.message-container.sys .user-color {
+  margin-right: 0;
+  margin-left: 10px;
 }
 .message-container.sys .username,
 .message-container.sys .message {

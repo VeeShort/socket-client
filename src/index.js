@@ -15,6 +15,7 @@ let userId;
 
 if (username) {
   client.emit('user:joinRequest', username);
+  document.querySelector('.chat-container').classList.add('visible');
 }
 
 const sendMessage = () => {
@@ -42,18 +43,23 @@ if (inputEl) {
   };
 }
 
-client.on('user:connection', id => {
+client.on('user:connection', ({ id, users }) => {
   userId = id;
 });
 
-client.on('user:joinSuccess', (username) => {
-  chat.displayMessage('has joined the chat', username, 'sys');
+client.on('sendUsers', users => {
+  console.log('users:', users);
+  chat.displayAllConnectedUsers(users);
+});
+
+client.on('user:joinSuccess', ({ username, color }) => {
+  chat.displayMessage('joined', username, color, 'sys');
 });
 
 client.on('user:exitSuccess', (username) => {
-  chat.displayMessage('has left the chat', username, 'sys');
+  chat.displayMessage('left', username, null ,'sys');
 });
 
-client.on('user:message', ({ username, message }) => {
-  chat.displayMessage(message, username);
+client.on('user:message', ({ username, message, color }) => {
+  chat.displayMessage(message, username, color);
 });
